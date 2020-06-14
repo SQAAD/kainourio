@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <title> Τι κάνεις? </title>
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+
+<script>
+jQuery(document).ready(function($) {
+	var interval;
+
+	$('.slides').hover(function() {
+		if (interval) clearInterval(interval);
+		clearInterval(interval);
+		interval = null;
+	}, function() {
+		interval = setInterval(function() { slideRight(); }, 2000);
+	});
+	var slideCount  = $('.slides ul li').length;
+	var slideWidth  = $('.slides ul li').width();
+	var slideHeight = $('.slides ul li').height();
+	var sliderWidth = slideCount * slideWidth;
+
+	$('.slides').css({ width: slideWidth, height: slideHeight });
+	$('.slides ul').css({ width: sliderWidth, marginLeft: - slideWidth });
+	$('.slides ul li:last-child').prependTo('.slides ul');
+
+	function slideLeft() {
+		$('.slides ul').animate({ left: + slideWidth }, 200, function() {
+			$('.slides ul li:last-child').prependTo('.slides ul');
+			$('.slides ul').css('left', '');
+		});
+	};
+	function slideRight() {
+		$('.slides ul').animate({ left: - slideWidth }, 200, function() {
+			$('.slides ul li:first-child').appendTo('.slides ul');
+			$('.slides ul').css('left', '');
+		});
+	};
+	$('a.slide-prev').click(function(e) {
+		e.preventDefault(); slideLeft();
+	});
+	$('a.slide-next').click(function(e) {
+		e.preventDefault(); slideRight();
+	});
+});
+</script>
+
+    <link rel="stylesheet" type="text/css" href="./stylo.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <style>
+.slides, .slides ul, .slides li { position: relative; overflow: hidden; width: 580px; height: 380px; margin: 0; padding: 0; }
+.slides { margin: 6em auto; }
+.slides ul li { float: left; list-style: none; }
+a.slide-prev, a.slide-next {
+	position: absolute; top: 50%; z-index: 999; display: block; width: 24px; height: 24px; margin-top: -12px; cursor: pointer; opacity: 0.3;
+	color: #fff; background: #000; text-decoration: none; text-align: center; font: bold 16px/24px Impact, sans-serif; border-radius: 24px;
+	}
+	a.slide-prev:hover, a.slide-next:hover { opacity: 0.7; -webkit-transition: all 0.3s ease; }
+	a.slide-next { right: 0; }
+</style>
+  </head>
+  <body>
+
+
+
+
+    <div class="slides">
+    	<ul>
+    		<li id="one"> <!-- <img src="./gandhi.jpg" alt="">  --></li>
+    		<li id="two"> <!-- <img src="bg.jpg" alt=""> -->   </li>
+    		<li id="three"> <!-- <img src="buddha.jpg" alt=""> --> </li>
+        <li id="four"> </li>
+    	</ul>
+    	<a href="#" class="slide-next">&gt;</a>
+    	<a href="#" class="slide-prev">&lt;</a>
+    </div>
+
+<div class="edoo">
+    <h1 style="color:yellow;"> Πώς σου φάνηκε? </h1>
+    <div class="rating">
+    <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+    </div>
+</div>
+
+
+
+
+
+  </body>
+
+
+
+
+
+  <!-- Add icon library -->
+  <!-- Add icon library -->
+
+<!--  <span class="fa fa-star checked"></span>
+  <span class="fa fa-star checked"></span>
+  <span class="fa fa-star checked"></span>
+  <span class="fa fa-star checked"></span>
+  <span class="fa fa-star checked"></span> -->
+
+
+
+
+</html>
